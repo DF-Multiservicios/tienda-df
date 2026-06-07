@@ -1,6 +1,14 @@
 # 🚀 Guía de DF Multiservicios - Publicación y Gestión del E-commerce
 
-Esta carpeta contiene todo lo necesario para desplegar tu sitio web en **GitHub Pages** y administrar tu inventario de productos. La página ha sido personalizada con la paleta de colores corporativa: **Negro profundo y Naranja brillante**.
+Esta carpeta contiene la versión definitiva de tu sitio web optimizado para **GitHub Pages** y diseñado en **Negro y Naranja**.
+
+---
+
+## 🆕 Últimas Novedades y Mejoras
+1. **Solo el precio final**: Eliminamos el "precio original" tachado de la tienda. Ahora solo se muestra el precio final con el margen de ganancia aplicado, logrando un diseño más limpio y directo.
+2. **Productos manuales funcionando correctamente**: La base de datos local y el scraper se comunican de forma fluida. Ahora tus productos en `data/productos_manuales.json` se fusionarán automáticamente.
+3. **Precios manuales más flexibles**: El sistema de excepciones de precios en `data/precios_manuales.json` ya no requiere que escribas el nombre exacto de forma estricta. Admite minúsculas/mayúsculas indiferentemente y realiza búsquedas de palabras clave (coincidencias parciales), facilitando su edición.
+4. **Actualización automática instantánea en GitHub**: Añadimos un disparador al workflow. Cada vez que subas cambios en tus archivos de configuración (`productos_manuales.json`, `precios_manuales.json` o `scraper.py`), GitHub ejecutará el scraper inmediatamente y actualizará la página web en menos de un minuto.
 
 ---
 
@@ -8,143 +16,88 @@ Esta carpeta contiene todo lo necesario para desplegar tu sitio web en **GitHub 
 
 ```text
 /GITHUB
-├── .github/workflows/actualizar-inventario.yml # Actualización automática diaria
+├── .github/workflows/actualizar-inventario.yml # Ejecución en push y diaria a las 00:00 UTC
 ├── assets/
 │   ├── css/style.css                          # Estilos de fondo y efectos (Negro/Naranja)
-│   └── js/main.js                             # Catálogo interactivo y filtros de la tienda
+│   └── js/main.js                             # Catálogo interactivo (Solo muestra el precio final)
 ├── data/
-│   ├── productos.json                          # Catálogo final compilado (Generado automáticamente)
+│   ├── productos.json                          # Catálogo final compilado (No editar a mano)
 │   ├── productos_manuales.json                 # Tus productos personalizados (¡Agrégalos aquí!)
-│   └── precios_manuales.json                   # Excepciones de precios para el scraper
+│   └── precios_manuales.json                   # Excepciones de precios (Coincidencia flexible)
 ├── images/
-│   ├── logo.jpeg                              # Logotipo de la empresa (DF Multiservicios)
+│   ├── logo.jpeg                              # Logotipo de la empresa
 │   └── ...                                    # Fotos de los servicios y productos
-├── index.html                                 # Página web principal (Negro y Naranja)
-├── scraper.py                                 # Script de Python que extrae productos de la web
+├── index.html                                 # Página web principal (Sin formulario de contacto)
+├── scraper.py                                 # Script de Python con coincidencia flexible y mezcla manual
 └── README.md                                  # Esta guía de uso
 ```
 
 ---
 
-## ☁️ 1. Cómo subir la página a GitHub y activar la Web Gratis
+## ☁️ 1. Cómo aplicar los cambios por primera vez en GitHub
 
-Sigue estos pasos para publicar tu sitio web en internet utilizando **GitHub Pages**:
+Para subir esta nueva versión mejorada a tu repositorio existente de GitHub, abre la consola en la carpeta `C:\Users\PC\Desktop\GITHUB` y ejecuta los siguientes comandos:
 
-### Paso A: Subir los archivos a un repositorio de GitHub
-1. Abre tu navegador e inicia sesión en [GitHub](https://github.com).
-2. Haz clic en el botón **"New"** (Nuevo) para crear un repositorio.
-3. Escribe un nombre para tu repositorio (por ejemplo: `tienda-df`).
-4. Selecciona la opción **Public** (Público) y deja las demás opciones sin marcar. Haz clic en **Create repository**.
-5. Abre la consola de comandos (**Git Bash**, **CMD** o **PowerShell**) en esta carpeta (`C:\Users\PC\Desktop\GITHUB`) y ejecuta los siguientes comandos ordenadamente:
-   ```bash
-   # 1. Inicializar el control de versiones en esta carpeta
-   git init
+```bash
+# 1. Registrar todos los archivos modificados
+git add .
 
-   # 2. Agregar todos los archivos para subirlos
-   git add .
+# 2. Crear un punto de restauración con los cambios de diseño y flujo
+git commit -m "Actualizacion: sin precio original y auto-ejecucion en push"
 
-   # 3. Guardar el estado inicial
-   git commit -m "Despliegue inicial de tienda negra y naranja"
+# 3. Subir los archivos a tu repositorio en GitHub
+# (Esto cargará el nuevo workflow, el index.html sin formulario y el main.js sin precio original)
+git push origin main
+```
 
-   # 4. Cambiar el nombre de la rama principal a 'main'
-   git branch -M main
-
-   # 5. Conectar tu carpeta local con tu repositorio en GitHub
-   # (Reemplaza 'tu-usuario' y 'tienda-df' por los datos de tu repositorio creado en GitHub)
-   git remote add origin https://github.com/tu-usuario/tienda-df.git
-
-   # 6. Subir tus archivos a GitHub
-   git push -u origin main -f
-   ```
-
-### Paso B: Activar GitHub Pages (Web en Línea)
-Una vez subidos los archivos:
-1. En la página de tu repositorio en GitHub, ve a la pestaña **Settings** (Configuración) en el menú superior.
-2. En el menú lateral izquierdo, haz clic en **Pages** (Páginas).
-3. En la sección **Build and deployment**:
-   - Bajo **Source**, asegúrate de que esté seleccionado **Deploy from a branch**.
-   - Bajo **Branch**, selecciona la rama **`main`** y la carpeta **`/ (root)`**.
-   - Haz clic en **Save** (Guardar).
-4. Espera 1 o 2 minutos. GitHub te mostrará arriba un enlace similar a:
-   `https://tu-usuario.github.io/tienda-df/`
-   ¡Esta será la dirección pública de tu tienda en internet!
+Una vez subido, ¡tu sitio web se actualizará con el nuevo diseño!
 
 ---
 
-## 🛍️ 2. Cómo Subir y Modificar Productos
+## 🛍️ 2. Cómo agregar y modificar productos (Flujo de Trabajo)
 
-Tienes dos formas de administrar tus productos en la tienda:
-
-### 🔹 Método Manual (Para productos propios, combos y servicios)
-Si quieres agregar productos que no provienen del proveedor (por ejemplo: la antena Starlink configurada, soporte técnico, armado de PCs personalizadas, etc.), utiliza el archivo de productos manuales:
-1. Abre el archivo [data/productos_manuales.json](file:///C:/Users/PC/Desktop/GITHUB/data/productos_manuales.json) con un editor de texto (como Bloc de Notas, VS Code u OpenCode).
-2. Agrega o modifica tus productos siguiendo este formato:
+### A) Agregar tus productos propios (Manuales)
+1. Abre el archivo [data/productos_manuales.json](file:///C:/Users/PC/Desktop/GITHUB/data/productos_manuales.json) en tu editor.
+2. Añade tus artículos respetando el formato (puedes copiar y pegar el bloque de ejemplo para agregar más):
    ```json
    {
      "name": "Nombre de tu producto o servicio",
-     "original_price": 100.00,
-     "price_with_margin": 120.00,
-     "image": "images/tu-imagen.jpeg", 
-     "category": "Componentes",
-     "specs": "Especificaciones técnicas del producto"
+     "original_price": 450.00,
+     "price_with_margin": 540.00,
+     "image": "images/tu-foto.jpeg", 
+     "category": "Periféricos",
+     "specs": "Descripción corta o especificaciones"
    }
    ```
-   *Nota: Las categorías disponibles para usar son: `"Componentes"`, `"Almacenamiento"`, `"Periféricos"`, `"PCs Armadas"`.*
-3. Guarda el archivo y ejecuta el scraper (Paso C) para que se actualice la base de datos de la web.
+3. Guarda el archivo.
 
-### 🤖 Método Automático (Scraper desde la web del proveedor)
-El script `scraper.py` descarga automáticamente los últimos productos del proveedor, les aplica un margen de ganancia del 20% y los combina con tus productos manuales.
-
-*   **Para cambiar el margen de ganancia**: Abre `scraper.py` y modifica el valor de `MARKUP = 1.20` (por ejemplo, `1.30` representa un 30% de ganancia).
-*   **Para fijar el precio de un producto scrapeado**: Si un producto específico del proveedor tiene un precio que quieres fijar a mano (sin aplicar el 20%), abre el archivo [data/precios_manuales.json](file:///C:/Users/PC/Desktop/GITHUB/data/precios_manuales.json) y agrega el nombre exacto del producto y su precio deseado:
-    ```json
-    {
-      "descripciones_manuales": {
-        "Nombre Exacto del Producto Proveedor": 99.99
-      }
-    }
-    ```
-
-### Paso C: Ejecutar el actualizador (Scraper)
-Cada vez que edites los productos manuales o quieras sincronizar con el proveedor, debes actualizar el archivo definitivo `productos.json`. Puedes hacerlo de dos formas:
-
-1. **De forma automática (Diaria)**: GitHub Actions ya está configurado en el archivo `.github/workflows/actualizar-inventario.yml`. Cada día a medianoche, ejecutará el script por ti, unirá tus productos manuales y actualizará la web de forma automática en internet.
-   > ⚠️ **IMPORTANTE**: Para que esto funcione, en GitHub ve a **Settings ➔ Actions ➔ General ➔ Workflow permissions**, selecciona la opción **Read and write permissions** (Permisos de lectura y escritura) y presiona **Save**.
-2. **De forma manual en tu PC**: Abre una terminal en esta carpeta y ejecuta:
-   ```bash
-   pip install requests beautifulsoup4
-   python scraper.py
+### B) Modificar precios del proveedor (Socio Vip)
+Si quieres fijar un precio personalizado para un producto de Visão Vip:
+1. Abre [data/precios_manuales.json](file:///C:/Users/PC/Desktop/GITHUB/data/precios_manuales.json).
+2. Escribe una palabra clave o parte del nombre del producto y su precio final:
+   ```json
+   {
+     "descripciones_manuales": {
+       "Precision 7780": 4200.00,
+       "Radeon RX580": 110.00
+     }
+   }
    ```
-   Esto generará el catálogo actualizado localmente. Luego, sube los cambios a GitHub para actualizar la web online:
-   ```bash
-   git add .
-   git commit -m "Actualizar inventario"
-   git push origin main
-   ```
+   *Nota: Gracias al nuevo buscador flexible, el scraper aplicará el precio `4200.00` a cualquier producto del proveedor que contenga "Precision 7780" en su nombre, sin importar mayúsculas o espacios.*
+
+### C) Aplicar los cambios en Internet
+Gracias a la nueva automatización, solo debes subir tus archivos editados a GitHub. La web se encargará del resto:
+```bash
+git add .
+git commit -m "Edicion de productos y precios manuales"
+git push origin main
+```
+Al hacer `git push`, GitHub Actions detectará la modificación de tus archivos de datos, ejecutará el script `scraper.py` en la nube, y actualizará la tienda online automáticamente.
 
 ---
 
-## 🖼️ 3. Cómo Elegir y Cambiar las Imágenes (como el Logo)
+## 🖼️ 3. Cambiar Imágenes y Logotipo
 
-Todas las imágenes locales se guardan en la carpeta `images/`.
-
-### Cambiar el Logotipo de la Empresa
-1. Consigue tu logotipo en formato `.jpeg` (o `.jpg`).
-2. Cámbiale el nombre a `logo.jpeg`.
-3. Pégalo dentro de la carpeta `images/`, reemplazando el archivo `logo.jpeg` existente.
-4. Si tu logotipo está en formato `.png` o tiene otro nombre, reemplázalo en la carpeta y edita la línea **245** y **606** de `index.html` para actualizar la extensión o el nombre del archivo.
-
-### Cambiar las imágenes de los Servicios y Portafolio
-Si realizaste un nuevo trabajo y deseas cambiar las imágenes de la sección de servicios o trabajos recientes:
-1. Pega tu foto dentro de la carpeta `images/` (por ejemplo: `nueva-antena.jpeg`).
-2. Abre `index.html` y busca la sección del servicio correspondiente (por ejemplo, busca `images/instalacion-de-antena-starlink.jpeg` en el código).
-3. Cambia esa ruta por el nombre de tu nuevo archivo (ejemplo: `images/nueva-antena.jpeg`).
-
----
-
-## 🎨 4. Personalización del Color (Negro y Naranja)
-
-El sitio web está diseñado con un fondo negro profundo y detalles naranja neón. Si deseas hacer ajustes visuales adicionales:
-
-1. **Estilos y Efectos de Brillo**: Se administran en el archivo [assets/css/style.css](file:///C:/Users/PC/Desktop/GITHUB/assets/css/style.css). Aquí puedes controlar la intensidad del brillo naranja en la clase `.neon-glow` y los botones.
-2. **Colores generales del sitio**: Están configurados dinámicamente mediante Tailwind CSS en la cabecera de [index.html](file:///C:/Users/PC/Desktop/GITHUB/index.html) (dentro del script `tailwind-config` entre las líneas 18 y 66). Si deseas cambiar los tonos de naranja o gris, modifica esos valores hexadecimales.
+- **Logo**: Reemplaza el archivo `images/logo.jpeg` con tu nueva imagen en formato JPEG con el nombre exacto `logo.jpeg`.
+- **Fotos de productos manuales**: Pega la imagen en la carpeta `images/` (ej. `mi-antena.jpeg`) y colócala en el campo `"image"` de tu producto manual en el JSON: `"images/mi-antena.jpeg"`.
+- **Subir cambios**: Guarda y ejecuta `git push origin main` para subirlas a internet.

@@ -21,7 +21,6 @@ async function loadProducts(filter = 'Todos') {
             }
 
             filteredProducts.forEach(product => {
-                const originalPrice = "$" + parseFloat(product.original_price).toFixed(2);
                 const finalPrice = "$" + parseFloat(product.price_with_margin).toFixed(2);
                 const phone = "595973232127";
 
@@ -41,7 +40,6 @@ async function loadProducts(filter = 'Todos') {
                             <p class="text-on-surface-variant text-xs mb-4 italic">${product.specs}</p>
                         </div>
                         <div class="mt-4">
-                            <p class="text-on-surface-variant text-sm line-through">${originalPrice}</p>
                             <p class="text-primary-container font-bold text-xl mb-4">${finalPrice}</p>
                             <a href="${waLink}" target="_blank" class="btn-primary w-full py-2.5 rounded-lg font-label-md flex justify-center items-center gap-2 neon-glow hover:neon-glow-hover">
                                 <span class="material-symbols-outlined text-[18px]">shopping_cart</span>

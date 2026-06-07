@@ -24,9 +24,14 @@ def get_manual_products():
 
 def get_manual_prices():
     if os.path.exists(MANUAL_PRICES_FILE):
-        with open(MANUAL_PRICES_FILE, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-            return data.get("descripciones_manuales", {})
+        try:
+            with open(MANUAL_PRICES_FILE, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                raw_prices = data.get("descripciones_manuales", {})
+                # Normalizar claves a minúsculas y sin espacios
+                return {k.strip().lower(): v for k, v in raw_prices.items()}
+        except Exception as e:
+            print(f"[WARNING] Error al leer precios manuales: {e}")
     return {}
 
 def clean_price(price_text):
@@ -115,10 +120,20 @@ def scrape_products():
 
             # PRICING LOGIC
             # Priority: Manual Price > Original Price * 1.20 (applied on promo price)
-            if name in manual_prices:
-                final_price = float(manual_prices[name])
+            name_normalized = name.strip().lower()
+            if name_normalized in manual_prices:
+                final_price = float(manual_prices[name_normalized])
             else:
-                final_price = price_val * MARKUP
+                # Búsqueda por subcadena para facilitar la coincidencia manual
+                matched_price = None
+                for key, val in manual_prices.items():
+                    if key in name_normalized and len(key) >= 5:
+                        matched_price = float(val)
+                        break
+                if matched_price is not None:
+                    final_price = matched_price
+                else:
+                    final_price = price_val * MARKUP
 
             products_data.append({
                 "name": name,

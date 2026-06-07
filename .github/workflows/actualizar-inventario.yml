@@ -3,6 +3,13 @@ name: Actualizar Inventario Diario
 on:
   schedule:
     - cron: '0 0 * * *' # Ejecutar todos los días a las 00:00 UTC
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/productos_manuales.json'
+      - 'data/precios_manuales.json'
+      - 'scraper.py'
   workflow_dispatch: # Permitir ejecución manual desde la pestaña Actions
 
 jobs:
