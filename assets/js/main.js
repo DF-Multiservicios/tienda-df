@@ -29,18 +29,18 @@ async function loadProducts(filter = 'Todos') {
                 const waLink = `https://wa.me/${phone}?text=${message}`;
 
                 const card = document.createElement('div');
-                card.className = 'glass-panel p-4 rounded-xl flex flex-col justify-between border-t border-white/5 hover:-translate-y-2 transition-transform duration-300';
+                card.className = 'glass-panel p-2 md:p-4 rounded-xl flex flex-col justify-between border-t border-white/5 hover:-translate-y-2 transition-transform duration-300';
                 card.innerHTML = `
                     <div class="flex flex-col h-full">
-                        <div class="w-full h-48 bg-white/5 rounded-lg mb-4 overflow-hidden flex items-center justify-center">
+                        <div class="w-full h-32 md:h-48 bg-white/5 rounded-lg mb-4 overflow-hidden flex items-center justify-center">
                             <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300'">
                         </div>
                         <div class="flex-grow">
-                            <h4 class="font-headline-md text-on-surface text-lg mb-2 line-clamp-2">${product.name}</h4>
-                            <p class="text-on-surface-variant text-xs mb-4 italic">${product.specs}</p>
+                            <h4 class="font-headline-md text-on-surface text-sm md:text-lg mb-2 line-clamp-2">${product.name}</h4>
+                            <p class="text-on-surface-variant text-[10px] md:text-xs mb-4 italic">${product.specs}</p>
                         </div>
                         <div class="mt-4">
-                            <p class="text-primary-container font-bold text-xl mb-4">${finalPrice}</p>
+                            <p class="text-primary-container font-bold text-base md:text-xl mb-4">${finalPrice}</p>
                             <a href="${waLink}" target="_blank" class="btn-primary w-full py-2.5 rounded-lg font-label-md flex justify-center items-center gap-2 neon-glow hover:neon-glow-hover">
                                 <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
                                 Comprar
