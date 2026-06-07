@@ -96,22 +96,6 @@
     "specs": "DDR5"
   },
   {
-    "name": "Kit Antena Starlink V4 Standard",
-    "original_price": 450.0,
-    "price_with_margin": 540.0,
-    "image": "images/instalacion-de-antena-starlink.jpeg",
-    "category": "Periféricos",
-    "specs": "Internet satelital de alta velocidad, ideal para áreas rurales"
-  },
-  {
-    "name": "PC Gamer Elite DF Intel Core i7 / RTX 4070 / 32GB RAM",
-    "original_price": 1500.0,
-    "price_with_margin": 1900.0,
-    "image": "images/computadora-gamer.jpeg",
-    "category": "PCs Armadas",
-    "specs": "Componentes de gama alta, ideal para streaming y gaming 4K"
-  },
-  {
     "name": "Celular Xiaomi Redmi 15C 4Gb De Ram 128Gb Pantalla 6 9 Dual Sim Lte Moonlight Azul Global",
     "original_price": 140.0,
     "price_with_margin": 140.0,
@@ -334,5 +318,13 @@
     "image": "https://cdn.visaovip.com/img/prod/apple-iphone-17-pro-max-mfxg4lla-a3257-256gb-esim-silver/54335/719028.jpg",
     "category": "Dispositivos Apple",
     "specs": "Apple Iphone 17 Pro Max Mfxg4Ll A A3257 256Gb Esim Silver"
+  },
+  {
+    "name": "Router Starlink Standard Kit Tri Band Wi Fi 6 Uta232 Utr 232",
+    "original_price": 559.0,
+    "price_with_margin": 559.0,
+    "image": "https://cdn.visaovip.com/img/prod/roteador-starlink-standard-kit-tri-band-wi-fi-6-uta232utr-232/47536/672617.jpg",
+    "category": "Periféricos",
+    "specs": "Router Starlink Standard Kit Tri Band Wi Fi 6 Uta232 Utr 232"
   }
 ]
