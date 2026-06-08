@@ -11,6 +11,13 @@ MANUAL_PRODUCTS_FILE = "data/productos_manuales.json"
 OUTPUT_FILE = "data/productos.json"
 MARKUP = 1.20  # 20% increase
 
+# Productos que NUNCA deben aparecer en la tienda
+BLACKLIST = [
+    "Kit Antena Starlink V4 Standard",
+    "Placa Madre Macrovip MV-B850 Socket AM5 / VGA / DDR5",
+    "PC Gamer Elite DF Intel Core i7 / RTX 4070 / 32GB RAM"
+]
+
 def get_manual_products():
     if os.path.exists(MANUAL_PRODUCTS_FILE):
         try:
@@ -93,6 +100,10 @@ def scrape_products():
             if not name_el:
                 continue
             name = name_el.get_text(strip=True)
+
+            # BLACKLIST CHECK
+            if any(bl.lower() in name.lower() for bl in BLACKLIST):
+                continue
 
             orig_el = link.find('p', class_=re.compile(r'text-line-through'))
             dest_el = link.find('p', class_=re.compile(r'PrecoDestacado'))

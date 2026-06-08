@@ -4,6 +4,42 @@ body {
     color: #f4f4f5;
 }
 
+/* Focus visible for accessibility */
+*:focus-visible {
+    outline: 2px solid #ff6b00;
+    outline-offset: 2px;
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #ff6b00;
+    outline-offset: 2px;
+}
+
+/* Improved contrast for muted text */
+.text-on-surface-variant {
+    color: #c1c1c1 !important;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-pulse,
+    .slide-active,
+    .slide-hidden {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .group-hover\:scale-105,
+    .group-hover\:scale-110,
+    .hover\:-translate-y-2 {
+        transform: none !important;
+    }
+}
+
 .glass-panel {
     background: rgba(22, 22, 26, 0.8);
     backdrop-filter: blur(12px);
