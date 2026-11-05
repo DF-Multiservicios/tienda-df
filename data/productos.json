@@ -64,14 +64,6 @@
     "specs": "556GBP-RGB Devarajas USB / RGB / Gray / Inglés - Negro / Gris"
   },
   {
-    "name": "PC Montado Intel Core i5 3470 de 3.2GHz / 8GB de RAM / 480GB SSD + Mouse / Teclado - Negro",
-    "original_price": 145.0,
-    "price_with_margin": 162.0,
-    "image": "https://cdn.visaovip.com/img/prod/pc-montado-intel-core-i5-3470-de-32ghz-8gb-de-ram-480gb-ssd-mouse-teclado-preto/60444/744466.jpg",
-    "category": "Almacenamiento",
-    "specs": "GHz / 8GB de RAM / 480GB SSD + Mouse / Teclado - Negro"
-  },
-  {
     "name": "Auricular JBL Live Beam 4 Perfect Fit TWS / Bluetooth - Champagne",
     "original_price": 135.0,
     "price_with_margin": 143.88,
@@ -94,6 +86,14 @@
     "image": "https://cdn.visaovip.com/img/prod/monitor-gamer-lg-ultragear-45gs95qe-b-45-wqhd-oled-curvo-240hz-003ms-preto/60003/742841.jpg",
     "category": "Periféricos",
     "specs": "Monitor Gamer LG UltraGear 45GS95QE-B 45\" WQHD OLED Curvo 240Hz / 0.03Ms - Negro"
+  },
+  {
+    "name": "Monitor LG Swing Touch 32U889SA-W 32\" 4K IPS / 5Ms - Blanco",
+    "original_price": 879.0,
+    "price_with_margin": 970.8,
+    "image": "https://cdn.visaovip.com/img/prod/monitor-lg-swing-touch-32u889sa-w-32-4k-ips-5ms-branco/60000/743048.jpg",
+    "category": "Periféricos",
+    "specs": "Monitor LG Swing Touch 32U889SA-W 32\" 4K IPS / 5Ms - Blanco"
   },
   {
     "name": "Celular Xiaomi Redmi 15C 4Gb De Ram 128Gb Pantalla 6 9 Dual Sim Lte Moonlight Azul Global",
